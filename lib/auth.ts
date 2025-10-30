@@ -1,5 +1,5 @@
+import { User } from "@/prisma/generated/prisma";
 import jwt from "jsonwebtoken";
-import { User } from "@prisma/client";
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-super-secret-jwt-key-change-in-production";
