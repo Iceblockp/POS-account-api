@@ -108,13 +108,22 @@ export async function POST(request: NextRequest) {
 
     const hashedPassword = password ? await bcrypt.hash(password, 10) : null;
 
+    // Set default expiration date to 7 days from now if not provided
+    let userExpireDate = null;
+    if (expireDate) {
+      userExpireDate = new Date(expireDate);
+    } else {
+      userExpireDate = new Date();
+      userExpireDate.setDate(userExpireDate.getDate() + 7);
+    }
+
     const user = await prisma.user.create({
       data: {
         email,
         name,
         password: hashedPassword,
         role: role || "USER",
-        expireDate: expireDate ? new Date(expireDate) : null,
+        expireDate: userExpireDate,
       },
     });
 

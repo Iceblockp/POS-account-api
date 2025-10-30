@@ -28,6 +28,10 @@ export async function GET(request: NextRequest) {
     const defaultPassword = "admin123";
     const hashedPassword = await bcrypt.hash(defaultPassword, 10);
 
+    // Set expiration date to 7 days from now for new admin
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + 7);
+
     const adminUser = await prisma.user.create({
       data: {
         email: defaultEmail,
@@ -35,6 +39,7 @@ export async function GET(request: NextRequest) {
         password: hashedPassword,
         role: "ADMIN",
         isActive: true,
+        expireDate,
       },
     });
 
