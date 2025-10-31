@@ -21,9 +21,9 @@ export async function POST(request: NextRequest) {
     // Support multiple client IDs (web, mobile, etc.)
     const allowedAudiences = [
       process.env.GOOGLE_CLIENT_ID,
-      "901821237725-rgri2jgmt7k3eicg6j6u1uqce6rpkt5j.apps.googleusercontent.com", // Mobile web client ID (from token)
-      "90182123725-rgri2jgmt7k3eicg6j6u1uqce6rpkt5j.apps.googleusercontent.com", // Mobile web client ID (from config)
-      "90182123725-756vv1db2deesv0l23vhvmcdnbs1a9pq.apps.googleusercontent.com", // iOS client ID
+      "188930484209-8p4a85jd2icaqdhnpni44picnl4vs2go.apps.googleusercontent.com", // Mobile web client ID (from token)
+      "188930484209-8p4a85jd2icaqdhnpni44picnl4vs2go.apps.googleusercontent.com", // Mobile web client ID (from config)
+      "188930484209-489r2d2jfr5fhfs5fedl4v0mbt8jp04g.apps.googleusercontent.com", // iOS client ID
       "188930484209-50u0s63o6dblc7cvi00snmeufm3jv190.apps.googleusercontent.com", // Original web client ID
     ].filter((id): id is string => Boolean(id));
 
